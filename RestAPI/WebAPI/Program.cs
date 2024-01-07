@@ -1,6 +1,9 @@
+using Bll.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
+using ServiceProvider = Bll.Services.Mock;
 
 namespace WebAPI
 {
@@ -13,17 +16,26 @@ namespace WebAPI
 			// Add services to the container.
 
 			builder.Services.AddControllers();
-			// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-			builder.Services.AddEndpointsApiExplorer();
-			builder.Services.AddSwaggerGen();
+
+			builder.Services.AddOpenApiDocument(configure =>
+			{
+				configure.Title = "Indigo API";
+				configure.Version = "v1";
+				configure.Description = "An ASP.NET Web API for the Indigo Project";
+			});
+
+			builder.Services.AddTransient<IItineraryService, ServiceProvider.ItineraryService>();
+			builder.Services.AddTransient<IRecordingService, ServiceProvider.RecordingService>();
+			builder.Services.AddTransient<IRouteService, ServiceProvider.RouteService>();
+			builder.Services.AddTransient<IUserService, ServiceProvider.UserService>();
 
 			var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
 			if (app.Environment.IsDevelopment())
 			{
-				app.UseSwagger();
-				app.UseSwaggerUI();
+				app.UseOpenApi();
+				app.UseSwaggerUi3();
 			}
 
 			app.UseHttpsRedirection();
