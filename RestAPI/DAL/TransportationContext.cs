@@ -1121,8 +1121,7 @@ namespace DAL
 				new RouteStop { RouteID = 20, StopID = 231, Direction = Direction.Inbound, Order = 42},
 				new RouteStop { RouteID = 20, StopID = 230, Direction = Direction.Inbound, Order = 43},
 				new RouteStop { RouteID = 20, StopID = 229, Direction = Direction.Inbound, Order = 44},
-				new RouteStop { RouteID = 20, StopID = 228, Direction = Direction.Inbound, Order = 45},
-
+				new RouteStop { RouteID = 20, StopID = 228, Direction = Direction.Inbound, Order = 45}
 				);
 			#endregion
 		}
