@@ -29,7 +29,16 @@ namespace Bll.Services.Impl
 
 		public IEnumerable<RecordingDto> GetRecordings()
 		{
-			throw new NotImplementedException();
+			return transportationContext.Recordings.Select(r => new RecordingDto
+			{
+				ID = r.ID,
+				Itinerary = new ItineraryDto()
+				{
+					ID = r.Itinerary.ID,
+					Start = r.Itinerary.Start,
+					End = r.Itinerary.End,
+				}
+			});
 		}
 	}
 }
