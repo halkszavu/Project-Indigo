@@ -109,20 +109,6 @@ namespace Bll.Services.Mock
 			};
 		}
 
-		public ItineraryDto UpdateItinerary(int id, ItineraryDto itinerary)
-		{
-			return new ItineraryDto()
-			{
-				ID = 1,
-				Start = "UpdatedStart",
-				End = "UpdatedEnd",
-				Owner = new UserDto()
-				{
-					ID = 1,
-					Username = "user",
-					Password = "password",
-				}
-			};
-		}
+		public void UpdateItinerary(int id, ItineraryDto itinerary) { }
 	}
 }

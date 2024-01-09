@@ -48,7 +48,8 @@ namespace WebAPI.Controllers
 		[HttpPut("{id}")]
 		public ActionResult<ItineraryDto> UpdateItinerary(int id, [FromBody]ItineraryDto itinerary)
 		{
-			return Accepted(itineraryService.UpdateItinerary(id, itinerary));
+			itineraryService.UpdateItinerary(id, itinerary);
+			return Accepted();
 		}
 
 		//GET: api/itinerary/start={start}&end={end}
