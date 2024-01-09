@@ -34,6 +34,6 @@ namespace Bll.Services
 		/// <param name="id">The id of the itinerary to update</param>
 		/// <param name="itinerary">The new itinerary, which the old one need to be updated</param>
 		/// <returns>The updated itinerary</returns>
-		ItineraryDto UpdateItinerary(int id, ItineraryDto itinerary);
+		void UpdateItinerary(int id, ItineraryDto itinerary);
 	}
 }

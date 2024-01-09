@@ -48,7 +48,8 @@ namespace WebAPI.Controllers
 		[HttpPut("{id}")]
 		public ActionResult<UserDto> UpdateUser(int id, [FromBody] UserDto user)
 		{
-			return Accepted(userService.UpdateUser(id, user));
+			userService.UpdateUser(id, user);
+			return Accepted();
 		}
 
 		//GET: api/user/{id}

@@ -27,6 +27,6 @@ namespace Bll.Services
 		/// <param name="id">The id of the updating user</param>
 		/// <param name="user">The user which it has to be updated to</param>
 		/// <returns>The updated user after update</returns>
-		UserDto UpdateUser(int id, UserDto user);
+		void UpdateUser(int id, UserDto user);
 	}
 }

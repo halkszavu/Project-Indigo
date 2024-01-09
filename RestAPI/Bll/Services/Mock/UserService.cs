@@ -27,14 +27,6 @@ namespace Bll.Services.Mock
 			};
 		}
 
-		public UserDto UpdateUser(int id, UserDto user)
-		{
-			return new UserDto()
-			{
-				ID = id,
-				Username = "UpdatedUsername",
-				Password = "UpdatedPassword",
-			};
-		}
+		public void UpdateUser(int id, UserDto user) { }
 	}
 }

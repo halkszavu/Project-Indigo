@@ -102,14 +102,6 @@ namespace Bll.Services.Mock
 			};
 		}
 
-		public RouteDto UpdateRoute(int id, RouteDto route)
-		{
-			return new RouteDto()
-			{
-				ID = 1,
-				RouteNumber = "UpdatedRouteNumber",
-				Provider = "UpdatedProvider",
-			};
-		}
+		public void UpdateRoute(int id, RouteDto route) { }
 	}
 }

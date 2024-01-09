@@ -48,7 +48,8 @@ namespace WebAPI.Controllers
 		[HttpPut("{id}")]
 		public ActionResult<RouteDto> UpdateRoute(int id, [FromBody]RouteDto route)
 		{
-			return Accepted(routeService.UpdateRoute(id, route));
+			routeService.UpdateRoute(id, route);
+			return Accepted();
 		}
 
 		//GET: api/route/routeNumber={id}

@@ -45,6 +45,6 @@ namespace Bll.Services
 		/// <param name="id">The id of the updating route</param>
 		/// <param name="route">The updated route</param>
 		/// <returns>The updated route after update</returns>
-		RouteDto UpdateRoute(int id, RouteDto route);
+		void UpdateRoute(int id, RouteDto route);
 	}
 }
