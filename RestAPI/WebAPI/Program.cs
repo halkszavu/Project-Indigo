@@ -1,9 +1,12 @@
 using Bll.Services;
+using DAL;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-using ServiceProvider = Bll.Services.Mock;
+using ServiceProvider = Bll.Services.Impl;
 
 namespace WebAPI
 {
@@ -28,6 +31,9 @@ namespace WebAPI
 			builder.Services.AddTransient<IRecordingService, ServiceProvider.RecordingService>();
 			builder.Services.AddTransient<IRouteService, ServiceProvider.RouteService>();
 			builder.Services.AddTransient<IUserService, ServiceProvider.UserService>();
+
+			builder.Services.AddDbContext<TransportationContext>(o =>
+				o.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"));
 
 			var app = builder.Build();
 
