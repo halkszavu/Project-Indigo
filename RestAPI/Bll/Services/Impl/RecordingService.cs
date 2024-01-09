@@ -1,6 +1,7 @@
 ﻿using Bll.Dtos;
 using Bll.Exceptions;
 using DAL;
+using DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,26 @@ namespace Bll.Services.Impl
 
 		public RecordingDto CreateNewRecording(RecordingDto recording)
 		{
-			throw new NotImplementedException();
+			Recording entity = new Recording
+			{
+				Itinerary = new Itinerary
+				{
+					Start = recording.Itinerary.Start,
+					End = recording.Itinerary.End,
+				}
+			};
+			transportationContext.Recordings.Add(entity);
+			transportationContext.SaveChanges();
+			return new RecordingDto
+			{
+				ID = entity.ID,
+				Itinerary = new ItineraryDto
+				{
+					ID = entity.Itinerary.ID,
+					Start = entity.Itinerary.Start,
+					End = entity.Itinerary.End,
+				}
+			};
 		}
 
 		public RecordingDto GetRecording(int id)
