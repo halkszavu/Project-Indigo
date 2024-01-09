@@ -143,7 +143,12 @@ namespace Bll.Services.Impl
 
 		public void UpdateRoute(int id, RouteDto route)
 		{
-			throw new NotImplementedException();
+			if(transportationContext.Routes.Any(r => r.ID == id))
+			{
+				CreateNewRoute(route);
+			}
+			else
+				throw new EntityNotFoundException("Route not found with the specified ID");
 		}
 	}
 }
