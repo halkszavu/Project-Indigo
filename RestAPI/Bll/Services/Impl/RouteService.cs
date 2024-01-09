@@ -99,17 +99,46 @@ namespace Bll.Services.Impl
 
 		public IEnumerable<RouteDto> GetRoutesByRouteNumber(string routeNumber)
 		{
-			throw new NotImplementedException();
+			var p = transportationContext.Routes.Where(r => r.RouteNumber.Contains(routeNumber));
+			if(p.Any())
+			{
+				return p.Select(r => new RouteDto()
+				{
+					ID = r.ID,
+					RouteNumber = r.RouteNumber,
+					Provider = r.Provider,
+					StopsOutbound = transportationContext.RouteStops.Where(rs => rs.RouteID == r.ID && rs.Direction == Direction.Outbound).OrderBy(rs => rs.Order).Select(rs => rs.Stop).Select(s => new StopDto() { ID = s.ID, Name = s.Name }).ToList(),
+					StopsInbound = transportationContext.RouteStops.Where(rs => rs.RouteID == r.ID && rs.Direction == Direction.Inbound).OrderBy(rs => rs.Order).Select(rs => rs.Stop).Select(s => new StopDto() { ID = s.ID, Name = s.Name }).ToList()
+				});
+			}
+			else
+				return new List<RouteDto>();
 		}
 
 		public IEnumerable<RouteDto> GetRoutesByStop(string stop)
 		{
-			throw new NotImplementedException();
+			Stop entity = transportationContext.Stops.FirstOrDefault(s => s.Name == stop);
+			if(entity == null)
+				throw new EntityNotFoundException("Stop not found with the specified name");
+			else
+				return GetRoutesByStopId(entity.ID);
 		}
 
 		public IEnumerable<RouteDto> GetRoutesByStopId(int stopId)
 		{
-			throw new NotImplementedException();
+			if(transportationContext.Stops.Any(s => s.ID == stopId))
+			{
+				return transportationContext.RouteStops.Where(rs => rs.StopID == stopId).Select(rs => rs.Route).Select(r => new RouteDto()
+				{
+					ID = r.ID,
+					RouteNumber = r.RouteNumber,
+					Provider = r.Provider,
+					StopsOutbound = transportationContext.RouteStops.Where(rs => rs.RouteID == r.ID && rs.Direction == Direction.Outbound).OrderBy(rs => rs.Order).Select(rs => rs.Stop).Select(s => new StopDto() { ID = s.ID, Name = s.Name }).ToList(),
+					StopsInbound = transportationContext.RouteStops.Where(rs => rs.RouteID == r.ID && rs.Direction == Direction.Inbound).OrderBy(rs => rs.Order).Select(rs => rs.Stop).Select(s => new StopDto() { ID = s.ID, Name = s.Name }).ToList()
+				});
+			}
+			else
+				throw new EntityNotFoundException("Stop not found with the specified ID");
 		}
 
 		public void UpdateRoute(int id, RouteDto route)
