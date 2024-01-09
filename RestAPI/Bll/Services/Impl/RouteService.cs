@@ -107,8 +107,8 @@ namespace Bll.Services.Impl
 					ID = r.ID,
 					RouteNumber = r.RouteNumber,
 					Provider = r.Provider,
-					StopsOutbound = transportationContext.RouteStops.Where(rs => rs.RouteID == r.ID && rs.Direction == Direction.Outbound).OrderBy(rs => rs.Order).Select(rs => rs.Stop).Select(s => new StopDto() { ID = s.ID, Name = s.Name }).ToList(),
-					StopsInbound = transportationContext.RouteStops.Where(rs => rs.RouteID == r.ID && rs.Direction == Direction.Inbound).OrderBy(rs => rs.Order).Select(rs => rs.Stop).Select(s => new StopDto() { ID = s.ID, Name = s.Name }).ToList()
+					StopsOutbound = transportationContext.RouteStops.Where(rs => rs.RouteID == r.ID && rs.Direction == Direction.Outbound).OrderBy(rs => rs.Order).Select(rs => rs.Stop).Select(s => new StopDto() { ID = s.ID, Name = s.Name, Routes = s.Routes.Select(r => new RouteDto() { ID = r.ID, RouteNumber = r.RouteNumber, Provider = r.Provider}).ToList() }).ToList(),
+					StopsInbound = transportationContext.RouteStops.Where(rs => rs.RouteID == r.ID && rs.Direction == Direction.Inbound).OrderBy(rs => rs.Order).Select(rs => rs.Stop).Select(s => new StopDto() { ID = s.ID, Name = s.Name, Routes = s.Routes.Select(r => new RouteDto() { ID = r.ID, RouteNumber = r.RouteNumber, Provider = r.Provider }).ToList() }).ToList()
 				});
 			}
 			else
@@ -133,8 +133,8 @@ namespace Bll.Services.Impl
 					ID = r.ID,
 					RouteNumber = r.RouteNumber,
 					Provider = r.Provider,
-					StopsOutbound = transportationContext.RouteStops.Where(rs => rs.RouteID == r.ID && rs.Direction == Direction.Outbound).OrderBy(rs => rs.Order).Select(rs => rs.Stop).Select(s => new StopDto() { ID = s.ID, Name = s.Name }).ToList(),
-					StopsInbound = transportationContext.RouteStops.Where(rs => rs.RouteID == r.ID && rs.Direction == Direction.Inbound).OrderBy(rs => rs.Order).Select(rs => rs.Stop).Select(s => new StopDto() { ID = s.ID, Name = s.Name }).ToList()
+					StopsOutbound = transportationContext.RouteStops.Where(rs => rs.RouteID == r.ID && rs.Direction == Direction.Outbound).OrderBy(rs => rs.Order).Select(rs => rs.Stop).Select(s => new StopDto() { ID = s.ID, Name = s.Name, Routes = s.Routes.Select(r => new RouteDto() { ID = r.ID, RouteNumber = r.RouteNumber, Provider = r.Provider }).ToList() }).ToList(),
+					StopsInbound = transportationContext.RouteStops.Where(rs => rs.RouteID == r.ID && rs.Direction == Direction.Inbound).OrderBy(rs => rs.Order).Select(rs => rs.Stop).Select(s => new StopDto() { ID = s.ID, Name = s.Name, Routes = s.Routes.Select(r => new RouteDto() { ID = r.ID, RouteNumber = r.RouteNumber, Provider = r.Provider }).ToList() }).ToList()
 				});
 			}
 			else
