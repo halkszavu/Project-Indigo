@@ -77,7 +77,24 @@ namespace Bll.Services.Impl
 
 		public RouteDto GetRoute(string routeNumber)
 		{
-			throw new NotImplementedException();
+			Route result = transportationContext.Routes.FirstOrDefault(r => r.RouteNumber == routeNumber);
+			if(result == null)
+				throw new EntityNotFoundException("Route not found with the specified route number");
+			else
+			{
+				RouteDto route = new()
+				{
+					ID = result.ID,
+					RouteNumber = result.RouteNumber,
+					Provider = result.Provider
+				};
+
+				//get the stops in both directions
+				route.StopsOutbound = transportationContext.RouteStops.Where(rs => rs.RouteID == result.ID && rs.Direction == Direction.Outbound).OrderBy(rs => rs.Order).Select(rs => rs.Stop).Select(s => new StopDto() { ID = s.ID, Name = s.Name}).ToList();
+				route.StopsInbound = transportationContext.RouteStops.Where(rs => rs.RouteID == result.ID && rs.Direction == Direction.Inbound).OrderBy(rs => rs.Order).Select(rs => rs.Stop).Select(s => new StopDto() { ID = s.ID, Name = s.Name}).ToList();
+
+				return route;
+			}
 		}
 
 		public IEnumerable<RouteDto> GetRoutesByRouteNumber(string routeNumber)

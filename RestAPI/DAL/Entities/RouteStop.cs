@@ -13,6 +13,8 @@ namespace DAL.Entities
 		[Required]
 		public int Order { get; set; }
 		public int RouteID { get; set; }
+		public Route Route { get; set; }
 		public int StopID { get; set; }
+		public Stop Stop { get; set; }
 	}
 }
