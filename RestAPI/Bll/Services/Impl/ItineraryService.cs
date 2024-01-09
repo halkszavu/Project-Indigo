@@ -1,4 +1,5 @@
 ﻿using Bll.Dtos;
+using Bll.Exceptions;
 using DAL;
 using DAL.Entities;
 using System;
@@ -74,7 +75,15 @@ namespace Bll.Services.Impl
 
 		public void UpdateItinerary(int id, ItineraryDto itinerary)
 		{
-			throw new NotImplementedException();
+			var entity = transportationContext.Itineraries.FirstOrDefault(i => i.ID == id);
+			if(entity != null)
+			{
+				entity.Start = itinerary.Start;
+				entity.End = itinerary.End;
+				transportationContext.SaveChanges();
+			}
+			else
+				throw new EntityNotFoundException("The itinerary with the given id does not exist.");
 		}
 	}
 }
