@@ -1,4 +1,5 @@
 ﻿using Bll.Dtos;
+using Bll.Exceptions;
 using DAL;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,19 @@ namespace Bll.Services.Impl
 
 		public RecordingDto GetRecording(int id)
 		{
-			throw new NotImplementedException();
+			if(transportationContext.Recordings.Any(r => r.ID == id))
+				return transportationContext.Recordings.Where(r => r.ID == id).Select(r => new RecordingDto
+				{
+					ID = r.ID,
+					Itinerary = new ItineraryDto()
+					{
+						ID = r.Itinerary.ID,
+						Start = r.Itinerary.Start,
+						End = r.Itinerary.End,
+					}
+				}).FirstOrDefault();
+			else
+				throw new EntityNotFoundException("The recording with the given id does not exist");
 		}
 
 		public IEnumerable<RecordingDto> GetRecordings()
