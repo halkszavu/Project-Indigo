@@ -2,19 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Bll.Services.Mock
+namespace Bll.Services.Impl
 {
 	public class UserService : IUserService
 	{
 		public UserDto CreateUser(UserDto user)
 		{
-			return new UserDto()
-			{
-				ID = 1,
-				Username = "CreatedUsername",
-				Password = "CreatedPassword",
-			};
+			return user;
 		}
 
 		public UserDto GetUserById(int id)
@@ -22,11 +19,12 @@ namespace Bll.Services.Mock
 			return new UserDto()
 			{
 				ID = id,
-				Username = "GetUserByIdUsername",
-				Password = "GetUserByIdPassword",
 			};
 		}
 
-		public void UpdateUser(int id, UserDto user) { }
+		public void UpdateUser(int id, UserDto user)
+		{
+			
+		}
 	}
 }
