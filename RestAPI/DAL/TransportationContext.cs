@@ -70,12 +70,12 @@ namespace DAL
 				new Route { ID = 17, Provider = "BKK", RouteNumber = "3" },
 				new Route { ID = 18, Provider = "BKK", RouteNumber = "4" },
 				new Route { ID = 19, Provider = "BKK", RouteNumber = "6" },
-				new Route { ID = 20, Provider = "BKK", RouteNumber = "5" }//,
-				//new Route { ID = 21, Provider = "BKK", RouteNumber = "8E" },
-				//new Route { ID = 22, Provider = "BKK", RouteNumber = "9" },
-				//new Route { ID = 23, Provider = "BKK", RouteNumber = "72" },
-				//new Route { ID = 24, Provider = "BKK", RouteNumber = "80" },
-				//new Route { ID = 25, Provider = "BKK", RouteNumber = "77" }
+				new Route { ID = 20, Provider = "BKK", RouteNumber = "5" },
+				new Route { ID = 21, Provider = "BKK", RouteNumber = "8E" },
+				new Route { ID = 22, Provider = "BKK", RouteNumber = "9" },
+				new Route { ID = 23, Provider = "BKK", RouteNumber = "72" },
+				new Route { ID = 24, Provider = "BKK", RouteNumber = "80" },
+				new Route { ID = 25, Provider = "BKK", RouteNumber = "77" }
 				);
 
 			modelBuilder.Entity<Stop>().HasData(
@@ -338,8 +338,8 @@ namespace DAL
 				new Stop { ID = 257, Name = "Juhos utca" },
 				new Stop { ID = 258, Name = "Kossuth utca, lakótelep" },
 				new Stop { ID = 259, Name = "Rákospalota, Kossuth utca" },
-				new Stop { ID = 260, Name = "Szarvas tér" }//,
-				//new Stop { ID = 226, Name = "" },
+				new Stop { ID = 260, Name = "Szarvas tér" },
+				new Stop { ID = 261, Name = "" }
 				);
 
 			modelBuilder.Entity<RouteStop>().HasData(
@@ -1121,7 +1121,8 @@ namespace DAL
 				new RouteStop { ID = 776, RouteID = 20, StopID = 231, Direction = Direction.Inbound, Order = 42},
 				new RouteStop { ID = 777, RouteID = 20, StopID = 230, Direction = Direction.Inbound, Order = 43},
 				new RouteStop { ID = 778, RouteID = 20, StopID = 229, Direction = Direction.Inbound, Order = 44},
-				new RouteStop { ID = 779, RouteID = 20, StopID = 228, Direction = Direction.Inbound, Order = 45}
+				new RouteStop { ID = 779, RouteID = 20, StopID = 228, Direction = Direction.Inbound, Order = 45},
+				new RouteStop { ID = 780, RouteID = 21, StopID = 261, Direction = Direction.Outbound, Order = 1}
 				);
 			#endregion
 		}
