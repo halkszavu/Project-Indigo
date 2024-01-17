@@ -339,7 +339,8 @@ namespace DAL
 				new Stop { ID = 258, Name = "Kossuth utca, lakótelep" },
 				new Stop { ID = 259, Name = "Rákospalota, Kossuth utca" },
 				new Stop { ID = 260, Name = "Szarvas tér" },
-				new Stop { ID = 261, Name = "" }
+				new Stop { ID = 261, Name = "" },
+				new Stop { ID = 262, Name = "" }
 				);
 
 			modelBuilder.Entity<RouteStop>().HasData(
@@ -1122,7 +1123,8 @@ namespace DAL
 				new RouteStop { ID = 777, RouteID = 20, StopID = 230, Direction = Direction.Inbound, Order = 43},
 				new RouteStop { ID = 778, RouteID = 20, StopID = 229, Direction = Direction.Inbound, Order = 44},
 				new RouteStop { ID = 779, RouteID = 20, StopID = 228, Direction = Direction.Inbound, Order = 45},
-				new RouteStop { ID = 780, RouteID = 21, StopID = 261, Direction = Direction.Outbound, Order = 1}
+				new RouteStop { ID = 780, RouteID = 21, StopID = 261, Direction = Direction.Outbound, Order = 1},
+				new RouteStop { ID = 781, RouteID = 21, StopID = 261, Direction = Direction.Inbound, Order = 1}
 				);
 			#endregion
 		}

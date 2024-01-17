@@ -6571,6 +6571,14 @@ namespace DAL.Migrations
                             Order = 1,
                             RouteID = 21,
                             StopID = 261
+                        },
+                        new
+                        {
+                            ID = 781,
+                            Direction = "Inbound",
+                            Order = 1,
+                            RouteID = 21,
+                            StopID = 261
                         });
                 });
 
@@ -7894,6 +7902,11 @@ namespace DAL.Migrations
                         new
                         {
                             ID = 261,
+                            Name = ""
+                        },
+                        new
+                        {
+                            ID = 262,
                             Name = ""
                         });
                 });

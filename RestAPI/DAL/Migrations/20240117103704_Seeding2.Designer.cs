@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(TransportationContext))]
-    [Migration("20240116210029_Seeding2")]
+    [Migration("20240117103704_Seeding2")]
     partial class Seeding2
     {
         /// <inheritdoc />
@@ -6574,6 +6574,14 @@ namespace DAL.Migrations
                             Order = 1,
                             RouteID = 21,
                             StopID = 261
+                        },
+                        new
+                        {
+                            ID = 781,
+                            Direction = "Inbound",
+                            Order = 1,
+                            RouteID = 21,
+                            StopID = 261
                         });
                 });
 
@@ -7897,6 +7905,11 @@ namespace DAL.Migrations
                         new
                         {
                             ID = 261,
+                            Name = ""
+                        },
+                        new
+                        {
+                            ID = 262,
                             Name = ""
                         });
                 });
