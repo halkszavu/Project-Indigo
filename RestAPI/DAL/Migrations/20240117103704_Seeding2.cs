@@ -85,6 +85,10 @@ namespace DAL.Migrations
 					{ 314, "Ciklámen utca" },
 					{ 315, "Vakok intézete" },
 					{ 316, "Zugló vasútállomás (Hermina út)" },
+					{ 317, "Nyugati pályaudvar M (Pocmaniczky utca)" },
+					{ 318, "Rippl-Rónai utca" },
+					{ 319, "Csobánc utca" },
+					{ 320, "Orczy út" },
 					{ 300, "" },
 				});
 
