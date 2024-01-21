@@ -34,6 +34,7 @@ namespace Bll.Services.Impl
 					Provider = route.Provider
 				};
 				transportationContext.Routes.Add(entity);
+				transportationContext.SaveChanges();
 
 				//save the stops, that are not already in the database
 				foreach(var stop in route.StopsOutbound.Concat(route.StopsInbound))
@@ -46,6 +47,7 @@ namespace Bll.Services.Impl
 						});
 					}
 				}
+				transportationContext.SaveChanges();
 
 				//save the stops in order
 				for(int i = 0; i < route.StopsOutbound.Count; i++)
