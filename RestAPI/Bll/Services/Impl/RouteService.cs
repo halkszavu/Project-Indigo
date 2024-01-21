@@ -46,8 +46,8 @@ namespace Bll.Services.Impl
 							Name = stop.Name
 						});
 					}
+					transportationContext.SaveChanges();
 				}
-				transportationContext.SaveChanges();
 
 				//save the stops in order
 				for(int i = 0; i < route.StopsOutbound.Count; i++)
