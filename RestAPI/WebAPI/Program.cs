@@ -33,7 +33,7 @@ namespace WebAPI
 			builder.Services.AddTransient<IUserService, ServiceProvider.UserService>();
 
 			builder.Services.AddDbContext<TransportationContext>(o =>
-				o.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"));
+				o.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Indigo;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"));
 
 			var app = builder.Build();
 
