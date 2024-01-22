@@ -7,6 +7,6 @@ namespace Bll.Dtos
         public int ID { get; set; }
 		public string Name { get; set; }
 
-		public List<RouteDto> Routes { get; set; }
+		public List<RouteDto> Routes { get; set; } = new();
     }
 }

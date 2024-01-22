@@ -25,11 +25,6 @@ namespace DAL
 
 		public TransportationContext(DbContextOptions<TransportationContext> options) : base(options) { }
 
-		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-		{
-			optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
-		}
-
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			base.OnModelCreating(modelBuilder);
@@ -70,12 +65,12 @@ namespace DAL
 				new Route { ID = 17, Provider = "BKK", RouteNumber = "3" },
 				new Route { ID = 18, Provider = "BKK", RouteNumber = "4" },
 				new Route { ID = 19, Provider = "BKK", RouteNumber = "6" },
-				new Route { ID = 20, Provider = "BKK", RouteNumber = "5" }//,
-				//new Route { ID = 21, Provider = "BKK", RouteNumber = "8E" },
-				//new Route { ID = 22, Provider = "BKK", RouteNumber = "9" },
-				//new Route { ID = 23, Provider = "BKK", RouteNumber = "72" },
-				//new Route { ID = 24, Provider = "BKK", RouteNumber = "80" },
-				//new Route { ID = 25, Provider = "BKK", RouteNumber = "77" }
+				new Route { ID = 20, Provider = "BKK", RouteNumber = "5" },
+				new Route { ID = 21, Provider = "BKK", RouteNumber = "8E" },
+				new Route { ID = 22, Provider = "BKK", RouteNumber = "9" },
+				new Route { ID = 23, Provider = "BKK", RouteNumber = "72" },
+				new Route { ID = 24, Provider = "BKK", RouteNumber = "80" },
+				new Route { ID = 25, Provider = "BKK", RouteNumber = "77" }
 				);
 
 			modelBuilder.Entity<Stop>().HasData(
@@ -338,8 +333,7 @@ namespace DAL
 				new Stop { ID = 257, Name = "Juhos utca" },
 				new Stop { ID = 258, Name = "Kossuth utca, lakótelep" },
 				new Stop { ID = 259, Name = "Rákospalota, Kossuth utca" },
-				new Stop { ID = 260, Name = "Szarvas tér" }//,
-				//new Stop { ID = 226, Name = "" },
+				new Stop { ID = 260, Name = "Szarvas tér" }
 				);
 
 			modelBuilder.Entity<RouteStop>().HasData(
